@@ -6,7 +6,7 @@ import pickle
 from nltk.tokenize import word_tokenize
 from nltk.stem import WordNetLemmatizer
 from sklearn.model_selection import train_test_split
-from sklearn.ensemble import RandomForestClassifier, AdaBoostClassifier
+from sklearn.ensemble import RandomForestClassifier
 from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
 from sklearn.pipeline import Pipeline
 from sklearn.multioutput import MultiOutputClassifier
@@ -67,7 +67,13 @@ def build_model():
     ('clf', MultiOutputClassifier(RandomForestClassifier())),
     ])
     
-    return pipeline
+    parameters = {'tfidf__use_idf': (True, False), 
+              'clf__estimator__n_estimators': [50, 100],
+              'clf__estimator__min_samples_split': [2, 4]}
+
+    cv = GridSearchCV(pipeline, verbose=1, param_grid=parameters)
+    
+    return cv
 
 
 def evaluate_model(model, X_test, Y_test, category_names):
