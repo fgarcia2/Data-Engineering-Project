@@ -1,0 +1,46 @@
+# Disaster Response Pipeline Project
+
+### Instructions:
+1. Run the following commands in the project's root directory to set up your database and model.
+
+    - To run ETL pipeline that cleans data and stores in database
+        `python data/process_data.py data/disaster_messages.csv data/disaster_categories.csv data/DisasterResponse.db`
+    - To run ML pipeline that trains classifier and saves
+        `python models/train_classifier.py data/DisasterResponse.db models/classifier.pkl`
+
+2. Go to `app` directory: `cd app`
+
+3. Run your web app: `python run.py`
+
+4. Click the `PREVIEW` button to open the homepage
+
+## Context 
+In this project, a dataset containing messages that were sent during a disaster event is utilized. Subsequently an ETL framework will be leveraged to prepare the data for model consumption. 
+
+Using this framework, a machine learning pipeline to categorize these events so that you can send the messages to an appropriate disaster relief agency. Visualizations of the data will also be included. 
+
+## Content 
+The primary dataset contains information about messages sent during an emergency, including id, message, original and genre. 
+
+## Installation 
+This project requires Python 3.x and the following Python libraries installed:
+
+NumPy Pandas sqlalchemy nltk sklearn json plotly joblib pickle and flask
+
+Python Spyder IDE has been used and is recommended for coding.
+
+## Project Motivation 
+This project will center itself on successfully classifying messages into disaster relief agencies. The structure of the folder is as follows 
+
+1. Data: contains the data required to be extracted and that will be used for training/testing of the model. 
+2. Model: contains the functions used to build and train the machine learning model.  
+3. App: Contains the code used for rendering the app that will display the visualization and results of the classifier model. 
+
+## File descriptions 
+
+Main Folder (run.py). Also supported by process_data.py and train_classifier.py files. 
+
+## Results 
+Overall, the main finding from the training data is that the messages can be primarily classified coming from the news genre, then followed by the direct category.  
+
+
