@@ -54,6 +54,9 @@ def clean_data(df):
     # Drop duplicates
     df_new = df.drop_duplicates()
     
+    # drop columns that do not contain binary values. 
+    df_new = df_new.drop(df_new[df_new['related'] == 2].index)
+    
     return df_new
 
 
