@@ -52,13 +52,22 @@ def index():
     '''
     Function to prepare visuals for plotting model results. 
     Input: None
-    Output: Bar graph with model classification results. 
+    Output: Visuals with model classification results. 
     '''
     
     # extract data needed for visuals
     genre_counts = df.groupby('genre').count()['message']
     genre_names = list(genre_counts.index)
     
+    # calculate distribution of classes among the different categories 
+    class_distr = df.drop(['id', 'message', 'original', 'genre'], axis = 1).sum()/len(df)
+
+    # sort values 
+    class_distr = class_distr.sort_values(ascending = False)
+    
+    # extract names of every class 
+    class_name = list(class_distr.index)
+
     # create visuals
     graphs = [
         {
@@ -76,6 +85,25 @@ def index():
                 },
                 'xaxis': {
                     'title': "Genre"
+                }
+            }
+        },
+        {
+            'data': [
+                Bar(
+                    x=class_name,
+                    y=class_distr,
+                    name = 'Categories'
+                )
+            ],
+
+            'layout': {
+                'title': 'Distribution of labels within classes',
+                'yaxis': {
+                    'title': "Distribution"
+                },
+                'xaxis': {
+                    'title': "Class",
                 }
             }
         }

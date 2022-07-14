@@ -41,6 +41,7 @@ This project will center itself on successfully classifying messages based on po
 Main Folder (run.py). Also supported by process_data.py and train_classifier.py files. 
 
 ## Results 
-Overall, the main finding from the training data is that the messages can be primarily classified coming from the news genre, then followed by the direct category.  
+Overall, one finding from the training data is that the messages can be primarily distributed as coming from the news genre, then followed by the direct and social categories.  
 
+A secondary visual depicts that related, aid-related and weather-related are the top three agencies to relay messages into. 
 
